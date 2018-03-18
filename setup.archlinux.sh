@@ -8,6 +8,13 @@ cp ./rsyncd.conf /etc/
 systemctl enable rsyncd
 systemctl start rsyncd
 
+# check rsync status
+set -x
+systemctl status rsyncd.service
+ps aux | grep 'rsync --daemon'
+rsync rsync://localhost:8990
+set +x
+
 # make incr directory
 INCR_DIR=/home/tk/incr
 USER=tk
