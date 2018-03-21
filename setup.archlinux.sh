@@ -2,9 +2,12 @@
 # must be root permission
 touch /root/test || exit
 
+USER=tk
+
 # rsync daemon
 pacman --noconfirm -S rsync
 cp ./rsyncd.conf /etc/
+rm -f /home/$USER/rsyncd.*
 systemctl enable rsyncd
 systemctl start rsyncd
 
@@ -16,7 +19,6 @@ rsync rsync://localhost:8990
 set +x
 
 # make incr directory
-INCR_DIR=/home/tk/incr
-USER=tk
+INCR_DIR=/home/$USER/incr
 mkdir -p $INCR_DIR
 chown $USER:$USER $INCR_DIR
