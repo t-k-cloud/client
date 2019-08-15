@@ -60,9 +60,7 @@ for i in {0..6}; do
 		6)
 		tmux send-keys -t tkcloud "top"
 		tmux send-keys -t tkcloud Enter
-		tmux send-keys -t tkcloud "PEE"
-		tmux select-pane -t tkcloud.3
+		tmux select-pane -t tkcloud.3 # focus on jobd pane
 		;;
 	esac
 done
-# ~/master-tree/proj/tkcloud/
